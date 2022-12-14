@@ -3,16 +3,15 @@
 [![CrowdStrike Container Security](./assets/youtube.png)](http://www.youtube.com/watch?v=4F1MtmgIvus "CrowdStrike Container Security")
 
 ## Runtime Protection
-To protect container and Kubernetes workloads choose between the following approaches. Either install traditional Falcon Container Sensor for Linux on each node of your cluster, or set-up Falcon Container Sensor to be deployed as a sidecar to each of your pods.
+To protect container workloads choose between the following approaches
+1) Run **Falcon Sensor for Linux** per worker node as a **DaemonSet**, recommended when worker node OS is supported.
+2) Run **Falcon Container Sensor for Linux** per pod as a **sidecar**, recommended when worker node OS is not supported.
 
-Note: In Kubernetes clusters where kernel module loading is supported by the worker node OS, we recommend using Falcon sensor for Linux to secure both worker nodes and containers with a single sensor.
+> Note: The DaemonSet deployment will protect both host and container workloads while sidecar deployments only protect the container workloads.
 
- - Falcon Sensor for Linux - deploying kernel-mode agent directly to the nodes
-   - [Implementation Guide - Using Helm Charts in Azure AKS](kernel-aks-implementation-guide.md)
-- Falcon Container Sensor for Linux
-   - [Implementation Guide - Falcon Sensor for Linux on AKS](falcon-container-aks-implementation-guide.md)
-- Container Demo Environments
-   - [Terraform for creating AKS demo environment with Falcon Sensor](falcon-container-terraform/README.md)
+## Deployment
+
+Use the [Falcon Helm Chart](https://github.com/CrowdStrike/falcon-helm/tree/main/helm-charts/falcon-sensor) or the [Falcon Operator](https://github.com/CrowdStrike/falcon-operator).
 
 ## Additional Resources
  - CrowdStrike Container Security: [Product Page](https://www.crowdstrike.com/products/cloud-security/falcon-cloud-workload-protection/container-security/)
